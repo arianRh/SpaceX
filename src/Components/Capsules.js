@@ -1,11 +1,12 @@
 import { useQuery } from "@apollo/client";
-import { GET_DATA } from "../graphql/queries";
-import { Skeleton } from "./Skeleton";
+import { Link } from "react-router-dom";
+import { CAPSULES } from "../graphql/queries";
+import { CapsulesSkeleton } from "./CapsulesSkeleton";
 
-export function Table() {
-	const { error, loading, data } = useQuery(GET_DATA);
+export function Capsules() {
+	const { error, loading, data } = useQuery(CAPSULES);
 
-	if (loading) return <Skeleton />;
+	if (loading) return <CapsulesSkeleton />;
 	if (error) return <p>error</p>;
 
 	return (
@@ -20,6 +21,7 @@ export function Table() {
 								<th className='px-6 py-3'>Mission name</th>
 								<th className='px-6 py-3'>Original lunch</th>
 								<th className='px-6 py-3'>Status</th>
+								<th className='px-6 py-3'>More info</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -39,6 +41,14 @@ export function Table() {
 										<td className='px-6 py-4'>{res.missions[0]?.name}</td>
 										<td className='px-6 py-4'>{res.original_launch}</td>
 										<td className='px-6 py-4'>{res.status}</td>
+										<td className='px-6 py-4'>
+											<Link
+												to={`/capsule/${res.id}`}
+												className='text-blue-500 hover:text-blue-800 hover:underline'
+											>
+												More
+											</Link>
+										</td>
 									</tr>
 								);
 							})}

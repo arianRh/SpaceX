@@ -1,8 +1,8 @@
-export function Skeleton() {
+export function CapsulesSkeleton() {
 	return (
 		<div className='flex flex-row'>
 			<div className='basis-1/4'></div>
-			<div className='basis-2/4 mb-40'>
+			<div className='basis-2/4 mb-10'>
 				<div className='border border-blue-100 shadow rounded-md h-80 w-full'>
 					<div className='animate-pulse'>
 						<div className='flex flex- w-full bg-slate-100 pb-3'>
